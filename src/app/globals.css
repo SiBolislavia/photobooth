@@ -1,0 +1,1046 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════
+   PHOTOBOOTH — Design System & Global Styles
+   Premium dark theme with glassmorphism, gradients, and micro-animations.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg-primary: #0a0a14;
+  --bg-secondary: #12122a;
+  --bg-card: rgba(20, 20, 48, 0.7);
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --text-primary: #f0f0ff;
+  --text-secondary: #9ca3c0;
+  --text-muted: #6b7294;
+  --accent: #6366f1;
+  --accent-light: #818cf8;
+  --accent-glow: rgba(99, 102, 241, 0.35);
+  --rose: #f43f5e;
+  --green: #22c55e;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-active: #3b82f6;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-inter);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+}
+
+/* ─── App Shell ──────────────────────────────────────────────────── */
+.photobooth-app {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #0a0a14 0%, #12122a 40%, #0f0f23 100%);
+}
+
+.step-wrapper {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ─── Landing Screen ─────────────────────────────────────────────── */
+.landing-screen {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.landing-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  pointer-events: none;
+  animation: orbFloat 8s ease-in-out infinite alternate;
+}
+
+.landing-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #6366f1, transparent);
+  top: -10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.landing-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #f43f5e, transparent);
+  bottom: -5%;
+  right: -5%;
+  animation-delay: 3s;
+}
+
+.landing-orb-3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, #8b5cf6, transparent);
+  top: 50%;
+  left: 60%;
+  animation-delay: 5s;
+}
+
+@keyframes orbFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -30px) scale(1.15); }
+}
+
+.landing-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 480px;
+}
+
+.landing-icon {
+  margin-bottom: 1.5rem;
+}
+
+.landing-camera-svg {
+  width: 96px;
+  height: 96px;
+  filter: drop-shadow(0 0 24px rgba(99, 102, 241, 0.5));
+}
+
+.landing-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #fff 0%, #818cf8 50%, #f43f5e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 0.75rem;
+  line-height: 1.1;
+}
+
+.landing-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 2rem;
+}
+
+.landing-start-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  box-shadow:
+    0 4px 24px var(--accent-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: var(--transition);
+}
+
+.landing-start-btn:hover {
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+}
+
+.landing-btn-icon {
+  font-size: 1.3rem;
+}
+
+.landing-features {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.landing-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  backdrop-filter: blur(12px);
+}
+
+.landing-feature-icon {
+  font-size: 1rem;
+}
+
+/* ─── Init Layout (Landing + Frame Picker side by side) ──────────── */
+.init-layout {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+}
+
+.init-left {
+  flex: 1;
+  display: flex;
+}
+
+.init-right {
+  width: 400px;
+  max-height: 100vh;
+  overflow-y: auto;
+  border-left: 1px solid var(--border);
+  background: var(--bg-secondary);
+  padding: 2rem 1.5rem;
+}
+
+/* ─── Frame Picker ───────────────────────────────────────────────── */
+.frame-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.frame-picker-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.frame-picker-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: -0.8rem 0 0;
+}
+
+.frame-picker-category {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.frame-picker-category-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.frame-picker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.frame-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem;
+  background: var(--bg-glass);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.frame-card:hover {
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.frame-card-selected {
+  border-color: var(--accent) !important;
+  background: rgba(99, 102, 241, 0.12) !important;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.frame-card-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.frame-card-slot {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.frame-card-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.frame-card-count {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* ─── Camera Viewport ────────────────────────────────────────────── */
+.camera-viewport {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 1.25rem;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.camera-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 720px;
+}
+
+.camera-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.camera-rec-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--rose);
+  box-shadow: 0 0 10px var(--rose);
+  animation: recPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes recPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.camera-rec-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--rose);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.camera-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.camera-count-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 0.35rem 0.75rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.camera-video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+  border: 2px solid var(--border);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* CSS mirror for live preview (PRD §2.1) */
+.camera-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.camera-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.camera-error-icon {
+  font-size: 3rem;
+  opacity: 0.5;
+}
+
+.camera-error-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.camera-error-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.camera-retry-btn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.camera-retry-btn:hover {
+  background: var(--accent-light);
+}
+
+/* ─── Countdown Overlay ──────────────────────────────────────────── */
+.countdown-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 20;
+}
+
+.countdown-number {
+  font-size: 8rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 60px var(--accent-glow), 0 0 120px var(--accent-glow);
+  user-select: none;
+}
+
+/* ─── Flash Overlay ──────────────────────────────────────────────── */
+.flash-overlay {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  z-index: 30;
+  pointer-events: none;
+}
+
+/* ─── Camera Thumbnails ──────────────────────────────────────────── */
+.camera-thumbnails {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.camera-thumbnail {
+  position: relative;
+  width: 80px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  background: #000;
+  transition: var(--transition);
+}
+
+.camera-thumbnail:hover {
+  border-color: var(--accent);
+}
+
+.camera-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-thumbnail-number {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* ─── Camera Controls ────────────────────────────────────────────── */
+.camera-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.camera-back-btn,
+.camera-next-btn {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+}
+
+.camera-back-btn:hover,
+.camera-next-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+.camera-next-btn {
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+}
+
+/* ─── Shutter Button ─────────────────────────────────────────────── */
+.shutter-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: var(--transition);
+}
+
+.shutter-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.shutter-btn-inner {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 0 0 4px rgba(99, 102, 241, 0.3),
+    0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: var(--transition);
+}
+
+.shutter-btn:not(:disabled):hover .shutter-btn-inner {
+  box-shadow:
+    0 0 0 6px var(--accent-glow),
+    0 0 40px var(--accent-glow);
+}
+
+.shutter-btn-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Slot Editor ────────────────────────────────────────────────── */
+.slot-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 1.5rem;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.slot-editor-header {
+  text-align: center;
+}
+
+.slot-editor-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.35rem;
+}
+
+.slot-editor-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.slot-editor-frames {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.slot-frame-chip {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+}
+
+.slot-frame-chip:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+.slot-frame-chip-active {
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-color: transparent;
+  box-shadow: 0 2px 12px var(--accent-glow);
+}
+
+.slot-editor-canvas {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 2px solid var(--border);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+}
+
+.slot-item {
+  position: absolute;
+  overflow: hidden;
+  cursor: grab;
+  border: 2px solid transparent;
+  transition: border-color var(--transition);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.slot-item:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+/* Active state: dashed accent border (Design.md §3.1) */
+.slot-item-active {
+  border: 2px dashed var(--border-active) !important;
+  cursor: grabbing;
+}
+
+.slot-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transform-origin: center center;
+}
+
+.slot-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.slot-empty-icon {
+  font-size: 1.5rem;
+  opacity: 0.3;
+}
+
+.slot-editor-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.slot-editor-back-btn {
+  padding: 0.65rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+}
+
+.slot-editor-back-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+.slot-editor-next-btn {
+  padding: 0.65rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px var(--accent-glow);
+  transition: var(--transition);
+}
+
+/* ─── Export Modal ────────────────────────────────────────────────── */
+.export-modal {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.export-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 600px;
+  width: 100%;
+}
+
+.export-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 0;
+  background: linear-gradient(135deg, #fff 0%, #818cf8 60%, #f43f5e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.export-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: -0.8rem 0 0;
+  text-align: center;
+}
+
+.export-preview-area {
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-glass);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.export-preview-img-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.export-preview-img {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.export-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.export-placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.4;
+}
+
+.export-error {
+  color: var(--rose);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.export-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.export-back-btn,
+.export-new-btn {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+}
+
+.export-back-btn:hover,
+.export-new-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+.export-generate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px var(--accent-glow);
+  transition: var(--transition);
+}
+
+.export-generate-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.export-download-btn {
+  padding: 0.65rem 1.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+  transition: var(--transition);
+}
+
+.export-print-btn {
+  padding: 0.65rem 1.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+  transition: var(--transition);
+}
+
+.export-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Frame Reminder ─────────────────────────────────────────────── */
+.frame-reminder {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  backdrop-filter: blur(16px);
+  z-index: 50;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.frame-reminder p {
+  margin: 0;
+}
+
+/* ─── Print Styles (Design.md §4) ────────────────────────────────── */
+.printable-sheet {
+  display: none;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-photo-sheet,
+  #printable-photo-sheet * {
+    visibility: visible;
+  }
+  #printable-photo-sheet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4in;
+    height: 6in;
+    margin: 0;
+    padding: 0;
+  }
+  .printable-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  @page {
+    size: 4in 6in;
+    margin: 0;
+  }
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .init-layout {
+    flex-direction: column;
+  }
+
+  .init-right {
+    width: 100%;
+    max-height: none;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .landing-title {
+    font-size: 2.2rem;
+  }
+
+  .landing-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .camera-video-wrapper {
+    max-width: 100%;
+  }
+
+  .slot-editor-canvas {
+    max-width: 100%;
+  }
+
+  .frame-picker-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .export-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .camera-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .camera-thumbnails {
+    gap: 0.5rem;
+  }
+
+  .camera-thumbnail {
+    width: 60px;
+    height: 45px;
+  }
+
+  .shutter-btn-inner {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* ─── Scrollbar styling ──────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
